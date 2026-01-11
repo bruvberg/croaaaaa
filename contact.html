@@ -1,62 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <title>Brian F., France's butler</title>
-    <link rel="stylesheet" href="tufte.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
+	<head>
+		<title>about</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="/files/css/stylesheet.css" /> <style>html {
+	font-family: 'Libertinus Serif', 'Linux Libertine', 'Georgia', 'serif', 'IPAMincho', 'Sazanami Mincho';
+	font-variant-numeric: oldstyle-nums;
+	font-size: 1.1em;
+	line-height: 1.5;
+	background-color: #FFFAF7;
+	color: #111;
+	text-align: center;
+	margin: 0;
+	width: 100%;
+	min-width: 32rem;
+}
 
-  <body>
-    <article>
-      <p class="subtitle">Say Bonjour. Or Bonsoir.</p>    <h1 id="tufte-css">I'd love for you to say, "Garçon, I need more France!"</h1>
+body {
+	display: inline-block;
+	text-align: left;
+	width: calc(100% - 2rem);
+	max-width: 50rem;
+	margin: 0 1rem;
+}
+
+/* general: headers */
+
+h1, h2 { font-weight: normal; }
+article > h1:first-child { display: none; }
+article.misc > h1:first-child,
+article.blog > h1:first-child,
+article > h1.error {
+	display: block;
+}
+h1 {
+	font-size: 2.4em;
+	margin: 0 0 0.6em 0;
+	font-style: normal;
+}
+h2 {
+	font-size: 1.8em;
+	margin: 1em 0 0.5em 0;
+	font-style: italic;
+}
+
+/* general: links */
+
+a       { text-decoration: none; }
+article          a { color: #47A; box-shadow: 0 1px #BCF; }
+article          a:hover { box-shadow: 0 2px #47A; }
+article.blog     a { color: #A63; box-shadow: 0 1px #FCB; }
+article.blog     a:hover { box-shadow: 0 2px #A63; }
+article.sketches a { color: #682; box-shadow: 0 1px #BC9; }
+article.sketches a:hover { box-shadow: 0 2px #682; }
+article          a:hover { color: #222; }
+
+/* general: code, figures, quotes, lists, separators */
+
+pre, img.bordered { box-shadow: 0px 0px 0px 3px #DDD; }
+pre, div.fullwidth { margin: 1.5em 0; }
+
+pre {
+	background-color: #EEE;
+	overflow: auto;
+	padding: 0;
+}
+pre .c1 { color: #888; }
+pre .cp { color: #A23; }
+pre .kt { color: #23A; }
+pre .s  { color: #291; }
+pre .se { color: #461; }
+pre .mi { color: #291; }
+
+img, video { max-width: 100%; }
+
+blockquote {
+	color: #666;
+	position: relative;
+	margin-left: 0;
+	padding-left: 3.5rem;
+}
+blockquote::before {
+	content: '\201D';
+	color: #CCC;
+	position: absolute;
+	left: 1rem;
+	font-size: 3.5em;
+	line-height: 0.75em;
+}
+blockquote footer {
+	margin-top: -1em;
+	text-align: right;
+}
+blockquote footer cite::before { content: '\2014'; }
+ul, ol { padding-left: 1.8rem; }
+li p { margin: 0; }
+sub, sup { line-height: 0; }
+sup.tag {
+	color: #888;
+	margin-left: 0.2em;
+}
+sup.tag::before { content: '['; }
+sup.tag::after { content: ']'; }
+hr {
+	border: none;
+	background-color: #AAA;
+	display: block;
+	height: 1px;
+	margin: 2em 0em;
+}
+div.licence {
+	color: #888;
+	font-size: small;
+	margin-bottom: 2em;
+	text-align: right;
+	width: 100%;
+}
+del + ins {
+	color: #444;
+	font-style: italic;
+	text-decoration: none;
+}
+
+/* header */
+
+header { margin: 1em 0 2em 0; }
+header nav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+header nav a {
+	color: #888;
+	display: inline-block;
+	margin: 0 0.5rem;
+	padding: 0 0;
+	font-size: 1.4em;
+	text-decoration: none;
+}
+header nav a:first-child { margin-left: 0; }
+header nav a:last-child { margin-right: 0; }
+header nav a.active {
+	color: #222;
+	box-shadow: 0 0.2rem #BBB;
+}
+header nav a:hover { color: #222; }
+
+/* article: main content https://edwardtufte.github.io/tufte-css/) */
+article > * { width: 60%; }
+article > p img { max-width: 100%; }
+article > ul, article > ol { width: calc(60% - 1.8rem); }
+article > blockquote { width: calc(60% - 3.5rem); }
+
+/* article: sidenotes/sidethoughts (https://edwardtufte.github.io/tufte-css/) */
+article { counter-reset: sidenote; }
+article small.sidenote,
+article small.sidethought {
+	display: inline-block;
+	float: right;
+	width: 60%; /* 60% of 60% = 36% */
+	margin-right: -66.666%; /* 60% + 66.666% of 60% = 100% */
+}
+article span.ref-sidenote::after,
+article small.sidenote::before {
+	content: counter(sidenote);
+	font-size: 0.75em;
+	line-height: 0;
+	vertical-align: super;
+}
+article span.ref-sidenote::after { counter-increment: sidenote; }
+article small.sidenote::before { margin-right: 0.2em; }
+
+/* article: fullwidth (https://edwardtufte.github.io/tufte-css/) */
+article > h1,
+article > h2,
+article > hr,
+article > div.codehilite,
+article *.fullwidth {
+	width: 100%;
+}
+
+/* blog */
+
+article.blog div.article-list {
+	border-top: 1px solid #AAA;
+	margin-top: 2em;
+	padding: 1em 0em;
+	position: relative;
+	width: 100%;
+}
+article.blog div.article-list h2 {
+	color: #888;
+	margin-top: 0em;
+}
+article.blog div.article-list div.atom {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	top: 1.5em;
+}
+article.blog div.article-list div.atom a {
+	background-image: url('/files/img/feed.png');
+	background-size: 1.5em;
+	background-repeat: no-repeat;
+	box-shadow: none;
+	color: rgba(0,0,0,0);
+	display: inline-block;
+	height: 1.5em;
+	overflow: hidden;
+	width: 1.5em;
+}
+article.blog div.article-list div.year {
+	padding: 0;
+	position: relative;
+	margin: 1em 0;
+}
+article.blog div.article-list div.year h3 {
+	color: #AAA;
+	font-size: 2em;
+	line-height: 1;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+article.blog div.article-list div.year ul {
+	font-style: italic;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+article.blog div.article-list ul li time {
+	color: #888;
+	font-size: 0.9em;
+}
+article.blog div.article-list ul li.current time { color: #111; }
+article.blog div.article-list ul li time::before { content: '« '; }
+
+/* photos */
+
+article.photos ul#overview {
+	list-style-type: none;
+	padding: 0;
+}
+article.photos ul#overview > li {
+	position: relative;
+	width: 100%;
+	height: 20em;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	margin: 0;
+}
+article.photos ul#overview > li .title {
+	position: absolute;
+	margin: 0;
+	color: #EEE;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.1em 0.2em;
+}
+article.photos ul#overview > li .description {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #EEE;
+	padding: 0.2em 0.2em 1.4em 0.2em;
+	position: absolute;
+	width: calc(100% - 0.4em);
+	bottom: 0;
+}
+article.photos ul#overview > li .description p { margin: 0; }
+article.photos ul#overview > li .count,
+article.photos ul#overview > li time {
+	color: #AAA;
+	position: absolute;
+	bottom: 0.1em;
+	z-index: 1;
+}
+article.photos ul#overview > li .count { left: 0.2em; }
+article.photos ul#overview > li time { right: 0.2em; }
+article.photos ul#overview > li > * {
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+article.photos ul#overview > li > .link { opacity: 1; }
+article.photos ul#overview > li > .link a {
+	background-color: rgba(0, 0, 0, 0.25);
+	color: transparent;
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+article.photos ul#overview > li:hover > * { opacity: 1; }
+article.photos ul#overview > li:hover > .link { opacity: 0; }
+
+/* sketches */
+
+article.sketches nav {
+	margin: 0;
+	text-align: center;
+	width: 100%;
+}
+article.sketches nav a {
+	display: inline-block;
+	margin: 0em 0.5em;
+}
+article.sketches div.fullwidth {
+	margin: 0;
+	margin-top: 0.75em;
+	text-align: center;
+}
+
+/* code */
+
+article.code ul.code-links { padding: 0; }
+article.code ul.code-links li {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	list-style-type: none;
+}
+article.code ul.code-links li.gitlab {
+	background-image: url('/files/img/gitlab.png');
+}
+article.code ul.code-links li.github {
+	background-image: url('/files/img/github.png');
+}
+article.code ul.code-links li a {
+	background-color: rgba(255, 250, 247, 0.1); /* site background colour */
+	box-shadow: none;
+	color: white;
+	display: inline-block;
+	font-size: 2em;
+	line-height: 5em;
+	opacity: 0;
+	text-align: center;
+	text-shadow: 0 0 0.15em black;
+	transition: opacity 0.2s;
+	width: 5em;
+}
+article.code ul.code-links li a:hover {
+	opacity: 1;
+}
+
+/* about */
+
+article.about div.canary {
+	font-style: italic;
+	margin: 2em 0em;
+	text-align: right;
+	width: 100%;
+}
+
+/* special stuff */
+span.latex-a, span.latex-t, span.latex-e { letter-spacing: -0.1em; }
+span.latex-a, span.latex-e { position: relative; }
+span.latex-l { letter-spacing: -0.25em; }
+span.latex-a {
+	font-size:0.8em;
+	bottom:0.2em;
+}
+span.latex-e { top:0.2em; }
+
+div.hiragana-table {
+	margin: 1.5em 0;
+	width: 100%;
+}
+div.hiragana-table table { border-collapse: collapse; display: inline-block; }
+div.hiragana-table table tbody tr td {
+	font-size: 1.8em;
+	padding: 0 0.2em;
+}
+div.hiragana-table table tbody tr td + td { border-left: 1px solid #CCC; }
+</style>
+	</head>
+	<body>
+<header>
+	<nav>
+	<a class="about active" href="index.html">at home</a>  <a class="about active" href="about.html">about</a><a class="about active" href="services.html">services</a><a class="about active" href="contact.html">contact</a>
+
+	</nav>
+</header>
+<article class="about">
+<h1 id="about">about</h1>
+<h2 id="me" style="font-size: 280%;"><b><span style="color:pencil;">contact</b> <br></h2>
+</b> </span><a href="mailto:brian.fno@proton.me" style="color: #000; text-decoration: none;">✉️ brian.fno@proton.me</a>
+      <span style="margin: 0 10px;">|</span>
+      <a href="tel:+33683358160" style="color: #000; text-decoration: none;">📞 +33 6 83 35 81 60</a><br><br>
+<p><small class="sidethought"><img src="moi.jpg" style="border-radius: 100%;" alt="gravatar" /><a href="https://instagram.com/brian.fno" style="color: #000; text-decoration: none;">@brian.fno</a>
+      <span style="margin: 0 10px;"><br><br><br />
+
+</small>I'd love for you to say... <i>"Garçon, I need more France!"</i>
+<!-- Testimonials Section --><br><br>
 
 
-      <section>
-            <p>If French ever leaves a frog in your throat, I’ll croak it away as I take real pleasure in helping—so never hesitate to reach out.
-Whether you need support, clarity, or just a steady hand behind the scenes, I’ll be there. 
-<br>
+  <blockquote>
+    <p>While filming in Paris, I needed a very specific art piece. Brian connected me with a painter represented by La Galerie Cécile Dufay. Everything was handled seamlessly, and the result exceeded expectations.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — Alec Huggins 🎬
+    </footer>
+  </blockquote>
 
-<br>mail: brian.fno@proton.me<br>
-          insta: @brian.fno<br>
-<p>💌<blockquote cite="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0000hB">
-  <p style="color:white; font-style:italic; margin-bottom:1em;">
-  While filming in Paris, I needed a very specific art piece. Brian connected me with a painter represented by La Galerie Cécile Dufay. Everything was handled seamlessly, and the result exceeded expectations.  
-  <cite style="font-style:normal; margin-left:0.5em;">
-    <a href="https://www.instagram.com/p/DAqObyqOZrm/?img_index=1" style="color:darkorange; text-decoration:none;">— Alec Huggins 🎬</a>
-  </cite>
-</p>
+  <blockquote>
+    <p>Brian has long been my go-to professional for complex bilingual projects across diverse sectors. His command of both language and culture is second to none — a true strategic partner.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — Jon Sanger, Director of Linguistica UK
+    </footer>
+  </blockquote>
 
-<p style="color:grey; font-style:italic; margin-bottom:1em;">
-  Brian has long been my go-to professional for complex bilingual projects across diverse sectors. His command of both language and culture is second to none — a true strategic partner.  
-  <cite style="font-style:normal; margin-left:0.5em; color:grey;"> — Jon Sanger, Director of <a href="https://linguistica-international.com" style="color:darkorange; text-decoration:none;">Linguistica UK</a>
-  </cite>
-</p>
+  <blockquote>
+    <p>I needed rare Italian fabrics for a bespoke suit — silk, wool, linen. Brian sourced the finest materials from Paris with care and precision.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — An American from L.A.
+    </footer>
+  </blockquote>
 
-<p style="color:white; font-style:italic; margin-bottom:1em;">
-  I needed rare Italian fabrics for a bespoke suit — silk, wool, linen. Brian sourced the finest materials from Paris with care and precision.  
-  <cite style="font-style:normal; margin-left:0.5em; color:white;">— An American from L.A.</cite>
-</p>
+  <blockquote>
+    <p>The most conscientious bilingual assistant I’ve worked with. No service has matched Brian’s accuracy, dedication, or discretion. His help has been essential in removing friction from the legal process. For Canadians needing bilingual support, he’s invaluable.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — A Canadian defending linguistic rights
+    </footer>
+  </blockquote>
 
-<p style="color:grey; font-style:italic; margin-bottom:1em;">
-  The most conscientious bilingual assistant I’ve worked with. No service has matched Brian’s accuracy, dedication, or discretion. His help has been essential in removing friction from the legal process. For Canadians needing bilingual support, he’s invaluable.  
-  <cite style="font-style:normal; margin-left:0.5em; color:grey;">
-    — <a href="https://ici.radio-canada.ca/nouvelle/2027268/droit-linguistique-gatineau-raymond-carby-samuels" style="color:darkorange; text-decoration:none;">A Canadian defending linguistic rights</a>
-  </cite>
-</p>
+  <blockquote>
+    <p>From property coordination to handling sensitive communication, Brian’s professionalism and efficiency have been a constant. Discretion is his craft.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — A Russian in Marseille
+    </footer>
+  </blockquote>
 
-<p style="color:white; font-style:italic; margin-bottom:1em;">
-  From property coordination to handling sensitive communication, Brian’s professionalism and efficiency have been a constant. Discretion is his craft.  
-  <cite style="font-style:normal; margin-left:0.5em; color:white;">— A Russian in Marseille</cite>
-</p>
+  <blockquote>
+    <p>For English-language legal matters, Brian has been a steady hand — meticulous, professional, and reliable even under pressure. Always a pleasure to work with.</p>
+    <footer style="margin-top: 1rem; text-align: right; font-style: normal; color: #555; font-size: 0.95em;">
+      — MDP Law
+    </footer>
+  </blockquote>
+</section>
+<hr />
+<div class="canary"><footer>
+  <div style="max-width: 800px; margin: 0 auto;">
 
-<p style="color:grey; font-style:italic; margin-bottom:1em;">
-  For English-language legal matters, Brian has been a steady hand — meticulous, professional, and reliable even under pressure. Always a pleasure to work with.   <cite style="font-style:normal; margin-left:0.5em; color:grey;">— <a href="https://mpdlaw.com" style="color:darkorange; text-decoration:none;">MDP Law</a></cite>  
-</p>
 
-<br><i>Votre humble serviteur,</i></p>
-<hr><footer><a href="index.html"> Brian F. </footer>
-                        </span></span></span></p>
-    </article>
-  </body>
+    <!-- Icônes réseaux (remplace par tes vrais liens) -->
+    <div style="margin: px 0;">
+
+      
+    </div>
+
+    <!-- Contact -->
+    <p style="font-size: 1em; margin: 20px 0;">
+      <a href="instagram.com/brian.fno" style="color: #000; text-decoration: none;">@brian.fno</a>
+      <span style="margin: 0 10px;">|</span><a href="mailto:brian.fno@proton.me" style="color: #000; text-decoration: none;">✉️ brian.fno@proton.me</a>
+      <span style="margin: 0 10px;">|</span>
+      <a href="tel:+33683358160" style="color: #000; text-decoration: none;">📞 +33 6 83 35 81 60</a>
+    </p>
+
+    <!-- Legal & Copyright -->
+    <p style="font-size: 0.9em; color: #777; margin-top: 40px;">
+      © 2026 Brian FINO – All Rights Reserved  
+      
+    </p>
+  </div>
+</footer></div></p></article>
+	</body>
 </html>

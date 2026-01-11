@@ -1,135 +1,214 @@
 <!DOCTYPE html>
-<html class="no-js ss-preload" lang="en">
-<head>
+<html lang="en">
+  <head> <style>html { font-family: "Libertinus Serif", "Linux Libertine", Georgia, serif, IPAMincho, "Sazanami Mincho"; font-variant-numeric: oldstyle-nums; font-size: 1.1em; line-height: 1.5; background-color: rgb(255, 250, 247); color: rgb(17, 17, 17); text-align: center; margin: 0px; width: 100%; min-width: 32rem; }
+body { display: inline-block; text-align: left; width: calc(100% - 2rem); max-width: 50rem; margin: 0px 1rem; }
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Croassant.</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+a {color: }
+h1, h2 { font-weight: normal; }
+article > h1:first-child { display: none; }
+article.misc > h1:first-child, article.blog > h1:first-child, article > h1.error { display: block; }
+h1 { font-size: 2.4em; margin: 0px 0px 0.6em; font-style: normal; }
+h2 { font-size: 1.8em; margin: 1em 0px 0.5em; font-style: italic; }
+a { text-decoration: none; }
+article a { color: rgb(170, 102, 51); box-shadow: rgb(255, 204, 187) 0px 1px; }
+article a:hover { box-shadow: rgb(68, 119, 170) 0px 2px; }
+article.blog a { color: rgb(170, 102, 51); box-shadow: rgb(255, 204, 187) 0px 1px; }
+article.blog a:hover { box-shadow: rgb(170, 102, 51) 0px 2px; }
+article.sketches a { color: rgb(102, 136, 34); box-shadow: rgb(187, 204, 153) 0px 1px; }
+article.sketches a:hover { box-shadow: rgb(102, 136, 34) 0px 2px; }
+article a:hover { color: rgb(34, 34, 34); }
+pre, img.bordered { box-shadow: rgb(221, 221, 221) 0px 0px 0px 3px; }
+pre, div.fullwidth { margin: 1.5em 0px; }
+pre { background-color: rgb(238, 238, 238); overflow: auto; padding: 0px; }
+pre .c1 { color: rgb(136, 136, 136); }
+pre .cp { color: rgb(170, 34, 51); }
+pre .kt { color: rgb(34, 51, 170); }
+pre .s { color: rgb(34, 153, 17); }
+pre .se { color: rgb(68, 102, 17); }
+pre .mi { color: rgb(34, 153, 17); }
+img, video { max-width: 100%; }
+blockquote { color: rgb(102, 102, 102); position: relative; margin-left: 0px; padding-left: 3.5rem; }
+blockquote::before { content: "”"; color: rgb(204, 204, 204); position: absolute; left: 1rem; font-size: 3.5em; line-height: 0.75em; }
+blockquote footer { margin-top: -1em; text-align: right; }
+blockquote footer cite::before { content: "—"; }
+ul, ol { padding-left: 1.8rem; }
+li p { margin: 0px; }
+sub, sup { line-height: 0; }
+sup.tag { color: rgb(136, 136, 136); margin-left: 0.2em; }
+sup.tag::before { content: "["; }
+sup.tag::after { content: "]"; }
+hr { border: medium; background-color: rgb(170, 170, 170); display: block; height: 1px; margin: 2em 0em; }
+div.licence { color: rgb(136, 136, 136); font-size: small; margin-bottom: 2em; text-align: right; width: 100%; }
+del + ins { color: rgb(68, 68, 68); font-style: italic; text-decoration: none; }
+header { margin: 1em 0px 2em; }
+header nav { list-style-type: none; margin: 0px; padding: 0px; }
+header nav a { color: rgb(136, 136, 136); display: inline-block; margin: 0px 0.5rem; padding: 0px; font-size: 1.4em; text-decoration: none; }
+header nav a:first-child { margin-left: 0px; }
+header nav a:last-child { margin-right: 0px; }
+header nav a.active { color: rgb(34, 34, 34); box-shadow: rgb(187, 187, 187) 0px 0.2rem; }
+header nav a:hover { color: rgb(34, 34, 34); }
+article > * { width: 60%; }
+article > p img { max-width: 100%; }
+article > ul, article > ol { width: calc(60% - 1.8rem); }
+article > blockquote { width: calc(60% - 3.5rem); }
+article { counter-reset: sidenote 0; }
+article small.sidenote, article small.sidethought { display: inline-block; float: right; width: 60%; margin-right: -66.666%; }
+article span.ref-sidenote::after, article small.sidenote::before { content: counter(sidenote); font-size: 0.75em; line-height: 0; vertical-align: super; }
+article span.ref-sidenote::after { counter-increment: sidenote 1; }
+article small.sidenote::before { margin-right: 0.2em; }
+article > h1, article > h2, article > hr, article > div.codehilite, article .fullwidth { width: 100%; }
+article.blog div.article-list { border-top: 1px solid rgb(170, 170, 170); margin-top: 2em; padding: 1em 0em; position: relative; width: 100%; }
+article.blog div.article-list h2 { color: rgb(136, 136, 136); margin-top: 0em; }
+article.blog div.article-list div.atom { display: inline-block; position: absolute; right: 0px; top: 1.5em; }
+article.blog div.article-list div.atom a { background-image: url("/files/img/feed.png"); background-size: 1.5em auto; background-repeat: no-repeat; box-shadow: none; color: rgba(0, 0, 0, 0); display: inline-block; height: 1.5em; overflow: hidden; width: 1.5em; }
+article.blog div.article-list div.year { padding: 0px; position: relative; margin: 1em 0px; }
+article.blog div.article-list div.year h3 { color: rgb(170, 170, 170); font-size: 2em; line-height: 1; font-style: italic; font-weight: normal; margin: 0px; position: absolute; top: 0px; right: 0px; }
+article.blog div.article-list div.year ul { font-style: italic; list-style-type: none; padding: 0px; margin: 0px; }
+article.blog div.article-list ul li time { color: rgb(136, 136, 136); font-size: 0.9em; }
+article.blog div.article-list ul li.current time { color: rgb(17, 17, 17); }
+article.blog div.article-list ul li time::before { content: "« "; }
+article.photos ul#overview { list-style-type: none; padding: 0px; }
+article.photos ul#overview > li { position: relative; width: 100%; height: 20em; overflow: hidden; background-repeat: no-repeat; background-position: center center; background-size: cover; margin: 0px; }
+article.photos ul#overview > li .title { position: absolute; margin: 0px; color: rgb(238, 238, 238); display: inline-block; background-color: rgba(0, 0, 0, 0.5); padding: 0.1em 0.2em; }
+article.photos ul#overview > li .description { background-color: rgba(0, 0, 0, 0.5); color: rgb(238, 238, 238); padding: 0.2em 0.2em 1.4em; position: absolute; width: calc(100% - 0.4em); bottom: 0px; }
+article.photos ul#overview > li .description p { margin: 0px; }
+article.photos ul#overview > li .count, article.photos ul#overview > li time { color: rgb(170, 170, 170); position: absolute; bottom: 0.1em; z-index: 1; }
+article.photos ul#overview > li .count { left: 0.2em; }
+article.photos ul#overview > li time { right: 0.2em; }
+article.photos ul#overview > li > * { opacity: 0; transition: opacity 0.2s; }
+article.photos ul#overview > li > .link { opacity: 1; }
+article.photos ul#overview > li > .link a { background-color: rgba(0, 0, 0, 0.25); color: transparent; display: inline-block; position: absolute; width: 100%; height: 100%; z-index: 1; }
+article.photos ul#overview > li:hover > * { opacity: 1; }
+article.photos ul#overview > li:hover > .link { opacity: 0; }
+article.sketches nav { margin: 0px; text-align: center; width: 100%; }
+article.sketches nav a { display: inline-block; margin: 0em 0.5em; }
+article.sketches div.fullwidth { margin: 0.75em 0px 0px; text-align: center; }
+article.code ul.code-links { padding: 0px; }
+article.code ul.code-links li { background-repeat: no-repeat; background-size: contain; display: inline-block; list-style-type: none; }
+article.code ul.code-links li.gitlab { background-image: url("/files/img/gitlab.png"); }
+article.code ul.code-links li.github { background-image: url("/files/img/github.png"); }
+article.code ul.code-links li a { background-color: rgba(255, 250, 247, 0.1); box-shadow: none; color: white; display: inline-block; font-size: 2em; line-height: 5em; opacity: 0; text-align: center; text-shadow: black 0px 0px 0.15em; transition: opacity 0.2s; width: 5em; }
+article.code ul.code-links li a:hover { opacity: 1; }
+article.about div.canary { font-style: italic; margin: 2em 0em; text-align: right; width: 100%; }
+span.latex-a, span.latex-t, span.latex-e { letter-spacing: -0.1em; }
+span.latex-a, span.latex-e { position: relative; }
+span.latex-l { letter-spacing: -0.25em; }
+span.latex-a { font-size: 0.8em; bottom: 0.2em; }
+span.latex-e { top: 0.2em; }
+div.hiragana-table { margin: 1.5em 0px; width: 100%; }
+div.hiragana-table table { border-collapse: collapse; display: inline-block; }
+div.hiragana-table table tbody tr td { font-size: 1.8em; padding: 0px 0.2em; }
+div.hiragana-table table tbody tr td + td { border-left: 1px solid rgb(204, 204, 204); }
 
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  .button {
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
+    border-radius: 20px;
+    width: 200px;
+    HEIGHT: 40px;
+    margin: px;
+    color: darkorange;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align:center;
+    box-shadow: -20px 5px $card-color;
+    aspect-ratio: 9/8;
+    cursor:pointer;
+    transition: all .13s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      // outline-offset: -20px;
+      transition: all .13s ease-in;
+      box-shadow:  -20.5px 10px $card-color;
+      // color: red;
+      scale: 1.05;
+    }
+    &:active {
+      // background-color: #3e8e41;
+      // box-shadow: 0 5px #666;
+      box-shadow:  -5.5px 1px $card-color;
+      transform: translateY(4px);
+    }
+    
 
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6Z9E59QZYZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      
+  }#part1{
+    &>:nth-child(1){
+      background-color: $my-pink;
+    }
+    &>:nth-child(2){
+      background-color:#70d6ff;
+    }
+    &>:nth-child(3){
+      background-color: #ff9770;
+    }
+  }.make-bg-color{
+    border-radius: 2px;
+    box-shadow: none;
+    min-width: 200px;
+    // box-shadow: -7px 10px $card-color;
+    aspect-ratio: 6/1;
+    padding: 6px 41px;
+    &:hover{
+      
+      box-shadow: -7px 10px $card-color;
+    }
+    span{
+      text-align: center;
+      // border-bottom: 1px dotted blue;
+      display:block;
+    }
+ 
 
-  gtag('config', 'G-6Z9E59QZYZ');
-</script>
-</head>
+  }
+</style>
+    <title>about</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/files/css/stylesheet.css" />
+  </head>
+  <body>
+<header>
+    <nav>
+  <a class="about active" href="index.html">at home</a>  <a class="about active" href="about.html">about</a><a class="about active" href="services.html">services</a><a class="about active" href="contact.html">contact</a>
 
-<body id="top">
+  </nav>
+</header>
+<article class="about">
+<h2 id="dwm">who's brian<span class="ref-sidenote"></span>?</h2>
+<p> <small class="sidenote" style="color: grey;"> <img src="butlersmaller.png"> Illustration by @Alexhouni<br><br><br><br></small> 
+My career began as a translator for English-speaking humans, after hearing one too many times that "us frogs can't croak English properly."<br><br>
+What started as simple translations soon grew into something bigger: clients needed discreet, genuine help navigating French bureaucracy, securing dream properties, unlocking hidden gems, and managing complex dealings with lawyers, notaires, and officials.<br><br>
+That's how I became France's Butler.
 
 
-    <!-- # preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
-        </div>
+
+<hr />
+<div class="canary"><footer>
+  <div style="max-width: 800px; margin: 0 auto;">
+
+
+    <!-- Icônes réseaux (remplace par tes vrais liens) -->
+    <div style="margin: px 0;">
+
+      
     </div>
 
+    <!-- Contact -->
+    <p style="font-size: 1em; margin: 20px 0;">
+      <a href="instagram.com/brian.fno" style="color: #000; text-decoration: none;">@brian.fno</a>
+      <span style="margin: 0 10px;">|</span><a href="mailto:brian.fno@proton.me" style="color: #000; text-decoration: none;">✉️ brian.fno@proton.me</a>
+      <span style="margin: 0 10px;">|</span>
+      <a href="tel:+33683358160" style="color: #000; text-decoration: none;">📞 +33 6 83 35 81 60</a>
+    </p>
 
-    <!-- # page wrap
-    ================================================== -->
-    <div class="s-pagewrap">
-
-        <div class="circles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-
-        <!-- ## site header 
-        ================================================== -->
-        <header class="s-header">
-
-            <div class="header-mobile">
-                <span class="mobile-home-link"><a href="index.html"><i>Croa</i>ssant.</a></span>
-                <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
-            </div>
-
-            <div class="row wide main-nav-wrap">
-                <nav class="column lg-12 main-nav">
-                    <ul>
-                  <li><a href="index.html"><i>Croa</i>ssant.</a></li>
-                        <li><a href="about.html" >About</a></li>
-                           <li><a href="services.html" >Services</a></li>
-                        <li><a href="work.html">Works</a></li>
-                                                <li><a href="testimonials.html" >Testimonials</a></li>
-
-                        <li><a href="contact.html">Say Bonjour</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-        </header> <!-- end s-header -->
-
-
-        <!-- ## main content
-        ==================================================- -->
-        <main class="s-content">
-
-
-            <!-- ### intro
-            ================================================== -->
-            <section id="intro" class="s-intro target-section">
-
-                <div class="row intro-content wide">
-
-                    <div class="column">
-                        <div class="text-pretitle">
-                        Our story? 
-                        </div>
-
-                        <h1 class="text-huge-title">
-                            Yours. <h4> Act. 1 [The butler steps in.]</h4>
-                        </h1>
-<p style="color: darkgrey;" animate> Imagine arriving at your grand hotel in Paris. You drop your bags, take in the view of the Eiffel Tower, and call the concierge for a taxi, dinner reservation, or perhaps a special request. But what if you need more? That's when we take the leap with serving your life with #MOREFRANCE.</p>
-                             <h4 class="text-huge-title " style="margin-left: 8; font-size: 30px; opacity: 0.3;"><a href="services.html">Our services.</a>
-
-        </main> <!-- end s-content -->
-
-
-        <!-- ## footer
-        ================================================== -->
-        <footer class="s-footer">
-
-            <div class="row">
-                <div class="column ss-copyright">
-                    <span>© Copyright Croassant 2025</span> 
-                    <span>Maintained by <a href="https://www.instagram.com/croaaassant/">Brian F.</a> </span>
-                </div>
-
-            </div>
-
-        </footer> <!-- end s-footer -->
-
-    </div> <!-- end -s-pagewrap -->
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-</body>
+    <!-- Legal & Copyright -->
+    <p style="font-size: 0.9em; color: #777; margin-top: 40px;">
+      © 2026 Brian FINO – All Rights Reserved  
+      
+    </p>
+  </div>
+</footer>
+</div></article>
+  </body>
 </html>

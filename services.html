@@ -1,245 +1,749 @@
 <!DOCTYPE html>
-<html class="no-js ss-preload" lang="en">
-<head>
+<html lang="en">
+  <head> <style>html { font-family: "Libertinus Serif", "Linux Libertine", Georgia, serif, IPAMincho, "Sazanami Mincho"; font-variant-numeric: oldstyle-nums; font-size: 1.1em; line-height: 1.5; background-color: rgb(255, 250, 247); color: rgb(17, 17, 17); text-align: center; margin: 0px; width: 100%; min-width: 32rem; }
+body { display: inline-block; text-align: left; width: calc(100% - 2rem); max-width: 50rem; margin: 0px 1rem; }
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Croa</i>ssant.</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+a {color: }
+h1, h2 { font-weight: normal; }
+article > h1:first-child { display: none; }
+article.misc > h1:first-child, article.blog > h1:first-child, article > h1.error { display: block; }
+h1 { font-size: 2.4em; margin: 0px 0px 0.6em; font-style: normal; }
+h2 { font-size: 1.8em; margin: 1em 0px 0.5em; font-style: italic; }
+a { text-decoration: none; }
+article a { color: rgb(170, 102, 51); box-shadow: rgb(255, 204, 187) 0px 1px; }
+article a:hover { box-shadow: rgb(68, 119, 170) 0px 2px; }
+article.blog a { color: rgb(170, 102, 51); box-shadow: rgb(255, 204, 187) 0px 1px; }
+article.blog a:hover { box-shadow: rgb(170, 102, 51) 0px 2px; }
+article.sketches a { color: rgb(102, 136, 34); box-shadow: rgb(187, 204, 153) 0px 1px; }
+article.sketches a:hover { box-shadow: rgb(102, 136, 34) 0px 2px; }
+article a:hover { color: rgb(34, 34, 34); }
+pre, img.bordered { box-shadow: rgb(221, 221, 221) 0px 0px 0px 3px; }
+pre, div.fullwidth { margin: 1.5em 0px; }
+pre { background-color: rgb(238, 238, 238); overflow: auto; padding: 0px; }
+pre .c1 { color: rgb(136, 136, 136); }
+pre .cp { color: rgb(170, 34, 51); }
+pre .kt { color: rgb(34, 51, 170); }
+pre .s { color: rgb(34, 153, 17); }
+pre .se { color: rgb(68, 102, 17); }
+pre .mi { color: rgb(34, 153, 17); }
+img, video { max-width: 100%; }
+blockquote { color: rgb(102, 102, 102); position: relative; margin-left: 0px; padding-left: 3.5rem; }
+blockquote::before { content: "”"; color: rgb(204, 204, 204); position: absolute; left: 1rem; font-size: 3.5em; line-height: 0.75em; }
+blockquote footer { margin-top: -1em; text-align: right; }
+blockquote footer cite::before { content: "—"; }
+ul, ol { padding-left: 1.8rem; }
+li p { margin: 0px; }
+sub, sup { line-height: 0; }
+sup.tag { color: rgb(136, 136, 136); margin-left: 0.2em; }
+sup.tag::before { content: "["; }
+sup.tag::after { content: "]"; }
+hr { border: medium; background-color: rgb(170, 170, 170); display: block; height: 1px; margin: 2em 0em; }
+div.licence { color: rgb(136, 136, 136); font-size: small; margin-bottom: 2em; text-align: right; width: 100%; }
+del + ins { color: rgb(68, 68, 68); font-style: italic; text-decoration: none; }
+header { margin: 1em 0px 2em; }
+header nav { list-style-type: none; margin: 0px; padding: 0px; }
+header nav a { color: rgb(136, 136, 136); display: inline-block; margin: 0px 0.5rem; padding: 0px; font-size: 1.4em; text-decoration: none; }
+header nav a:first-child { margin-left: 0px; }
+header nav a:last-child { margin-right: 0px; }
+header nav a.active { color: rgb(34, 34, 34); box-shadow: rgb(187, 187, 187) 0px 0.2rem; }
+header nav a:hover { color: rgb(34, 34, 34); }
+article > * { width: 60%; }
+article > p img { max-width: 100%; }
+article > ul, article > ol { width: calc(60% - 1.8rem); }
+article > blockquote { width: calc(60% - 3.5rem); }
+article { counter-reset: sidenote 0; }
+article small.sidenote, article small.sidethought { display: inline-block; float: right; width: 60%; margin-right: -66.666%; }
+article span.ref-sidenote::after, article small.sidenote::before { content: counter(sidenote); font-size: 0.75em; line-height: 0; vertical-align: super; }
+article span.ref-sidenote::after { counter-increment: sidenote 1; }
+article small.sidenote::before { margin-right: 0.2em; }
+article > h1, article > h2, article > hr, article > div.codehilite, article .fullwidth { width: 100%; }
+article.blog div.article-list { border-top: 1px solid rgb(170, 170, 170); margin-top: 2em; padding: 1em 0em; position: relative; width: 100%; }
+article.blog div.article-list h2 { color: rgb(136, 136, 136); margin-top: 0em; }
+article.blog div.article-list div.atom { display: inline-block; position: absolute; right: 0px; top: 1.5em; }
+article.blog div.article-list div.atom a { background-image: url("/files/img/feed.png"); background-size: 1.5em auto; background-repeat: no-repeat; box-shadow: none; color: rgba(0, 0, 0, 0); display: inline-block; height: 1.5em; overflow: hidden; width: 1.5em; }
+article.blog div.article-list div.year { padding: 0px; position: relative; margin: 1em 0px; }
+article.blog div.article-list div.year h3 { color: rgb(170, 170, 170); font-size: 2em; line-height: 1; font-style: italic; font-weight: normal; margin: 0px; position: absolute; top: 0px; right: 0px; }
+article.blog div.article-list div.year ul { font-style: italic; list-style-type: none; padding: 0px; margin: 0px; }
+article.blog div.article-list ul li time { color: rgb(136, 136, 136); font-size: 0.9em; }
+article.blog div.article-list ul li.current time { color: rgb(17, 17, 17); }
+article.blog div.article-list ul li time::before { content: "« "; }
+article.photos ul#overview { list-style-type: none; padding: 0px; }
+article.photos ul#overview > li { position: relative; width: 100%; height: 20em; overflow: hidden; background-repeat: no-repeat; background-position: center center; background-size: cover; margin: 0px; }
+article.photos ul#overview > li .title { position: absolute; margin: 0px; color: rgb(238, 238, 238); display: inline-block; background-color: rgba(0, 0, 0, 0.5); padding: 0.1em 0.2em; }
+article.photos ul#overview > li .description { background-color: rgba(0, 0, 0, 0.5); color: rgb(238, 238, 238); padding: 0.2em 0.2em 1.4em; position: absolute; width: calc(100% - 0.4em); bottom: 0px; }
+article.photos ul#overview > li .description p { margin: 0px; }
+article.photos ul#overview > li .count, article.photos ul#overview > li time { color: rgb(170, 170, 170); position: absolute; bottom: 0.1em; z-index: 1; }
+article.photos ul#overview > li .count { left: 0.2em; }
+article.photos ul#overview > li time { right: 0.2em; }
+article.photos ul#overview > li > * { opacity: 0; transition: opacity 0.2s; }
+article.photos ul#overview > li > .link { opacity: 1; }
+article.photos ul#overview > li > .link a { background-color: rgba(0, 0, 0, 0.25); color: transparent; display: inline-block; position: absolute; width: 100%; height: 100%; z-index: 1; }
+article.photos ul#overview > li:hover > * { opacity: 1; }
+article.photos ul#overview > li:hover > .link { opacity: 0; }
+article.sketches nav { margin: 0px; text-align: center; width: 100%; }
+article.sketches nav a { display: inline-block; margin: 0em 0.5em; }
+article.sketches div.fullwidth { margin: 0.75em 0px 0px; text-align: center; }
+article.code ul.code-links { padding: 0px; }
+article.code ul.code-links li { background-repeat: no-repeat; background-size: contain; display: inline-block; list-style-type: none; }
+article.code ul.code-links li.gitlab { background-image: url("/files/img/gitlab.png"); }
+article.code ul.code-links li.github { background-image: url("/files/img/github.png"); }
+article.code ul.code-links li a { background-color: rgba(255, 250, 247, 0.1); box-shadow: none; color: white; display: inline-block; font-size: 2em; line-height: 5em; opacity: 0; text-align: center; text-shadow: black 0px 0px 0.15em; transition: opacity 0.2s; width: 5em; }
+article.code ul.code-links li a:hover { opacity: 1; }
+article.about div.canary { font-style: italic; margin: 2em 0em; text-align: right; width: 100%; }
+span.latex-a, span.latex-t, span.latex-e { letter-spacing: -0.1em; }
+span.latex-a, span.latex-e { position: relative; }
+span.latex-l { letter-spacing: -0.25em; }
+span.latex-a { font-size: 0.8em; bottom: 0.2em; }
+span.latex-e { top: 0.2em; }
+div.hiragana-table { margin: 1.5em 0px; width: 100%; }
+div.hiragana-table table { border-collapse: collapse; display: inline-block; }
+div.hiragana-table table tbody tr td { font-size: 1.8em; padding: 0px 0.2em; }
+div.hiragana-table table tbody tr td + td { border-left: 1px solid rgb(204, 204, 204); }
 
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  .button {
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
+    border-radius: 20px;
+    width: 200px;
+    HEIGHT: 40px;
+    margin: px;
+    color: darkorange;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align:center;
+    box-shadow: -20px 5px $card-color;
+    aspect-ratio: 9/8;
+    cursor:pointer;
+    transition: all .13s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      // outline-offset: -20px;
+      transition: all .13s ease-in;
+      box-shadow:  -20.5px 10px $card-color;
+      // color: red;
+      scale: 1.05;
+    }
+    &:active {
+      // background-color: #3e8e41;
+      // box-shadow: 0 5px #666;
+      box-shadow:  -5.5px 1px $card-color;
+      transform: translateY(4px);
+    }
+    
 
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest"><script async src="https://www.googletagmanager.com/gtag/js?id=G-6Z9E59QZYZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      
+  }#part1{
+    &>:nth-child(1){
+      background-color: $my-pink;
+    }
+    &>:nth-child(2){
+      background-color:#70d6ff;
+    }
+    &>:nth-child(3){
+      background-color: #ff9770;
+    }
+  }.make-bg-color{
+    border-radius: 2px;
+    box-shadow: none;
+    min-width: 200px;
+    // box-shadow: -7px 10px $card-color;
+    aspect-ratio: 6/1;
+    padding: 6px 41px;
+    &:hover{
+      
+      box-shadow: -7px 10px $card-color;
+    }
+    span{
+      text-align: center;
+      // border-bottom: 1px dotted blue;
+      display:block;
+    }
+ 
 
-  gtag('config', 'G-6Z9E59QZYZ');
-</script>
+  }
+</style>
+    <title>about</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/files/css/stylesheet.css" />
+  </head>
+  <body>
+<header>
+    <nav>
+  <a class="about active" href="index.html">at home</a>  <a class="about active" href="about.html">about</a><a class="about active" href="services.html">services</a><a class="about active" href="contact.html">contact</a>
 
-</head>
+  </nav>
+</header>
+<article class="about">
 
-<body id="top">
+<h2 id="dwm">where is brian?</h2>
+<p> Likely putting France on the menu.</p><br>
+<details>
+  <summary >
+    <img src="house.png" 
+         alt="Home icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Home Management</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>Complete management of your French residence(s):</strong></p>
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Daily household coordination & staff management</li>
+      <li>Maintenance, repairs & renovations oversight</li>
+      <li>Seasonal opening/closing of properties</li>
+      <li>Concierge-level provisioning (linens, wine cellar, flowers…)</li>
+      <li>Discreet security & privacy arrangements</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Additional Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Setting up or Switching 1 Utility Contract<br><small>(Electricity, gas, phone/internet, etc.)</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">60 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Setting up or Switching 2 Utility Contracts</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">110 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Setting up or Switching 3 Utility Contracts</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">160 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Comparing House Insurances</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">80 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Dealing with Estate Agents & Notaires (Solicitors)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Applying for Planning Permission</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">ANAH Applications</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">110 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Finding and Contacting Artisans, People for gîte changeovers, Maintenance, Gardeners etc.</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">House Checks</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * Travel fees: 0,75 €/km round trip<br>
+      If journey > 1h, an extra 20 € will be added.
+    </p>
+  </div>
+</details>
+<br>
+
+<details>
+  <summary>
+    <img src="accounts.png" 
+         alt="Finance icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Finance</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>I can help you establish your finances, no matter what stage in life you’re at.</strong></p>
+    <p>From setting up your micro-entreprise and tax accounts to handling annual declarations, modifications, and direct liaison with French authorities — I take care of the administrative burden so you stay compliant and stress-free.</p>
+    
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Micro-entreprise creation & URSSAF setup</li>
+      <li>Tax optimisation & declarations (first-year & ongoing)</li>
+      <li>ACRE/ACRE eligibility & applications</li>
+      <li>Property tax declarations (IFI, taxe foncière, etc.)</li>
+      <li>Liaison with tax offices, banks, CAF, and other administrations</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Tax & Financial Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Micro Entreprise Application<br><small>Including setting up your URSSAF account</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">130 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">ACRE Application</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">40 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">CFE Declaration</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">40 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Micro Entreprise Modifications<br><small>Adding/removing activities, changing address, etc.</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">First-year Paper Tax Return</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">180 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Yearly Online Tax Return</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">120 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Setting up your Online Tax Account<br><small>For non-residents</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Déclaration de Biens Immobiliers (Property Wealth Declaration)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Contacting the Tax Office or Bank on your Behalf</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">25 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Accompanying you to the Tax Office or Bank</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote<br><small>(50 €/hour + travel fees)</small></td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">CAF / RSA / CROUS Applications</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">120 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * Travel fees: 0.75 €/km round trip<br>
+      If journey > 1h, an extra 20 € will be added.
+    </p>
+  </div>
+</details>
+<br>
 
 
-    <!-- # preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
-        </div>
+<details>
+  <summary>
+    <img src="deal.png" 
+         alt="Property icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Property Services</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>From search to keys in hand — and beyond:</strong></p>
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Discreet property sourcing & off-market opportunities</li>
+      <li>Negotiation & transaction management</li>
+      <li>Legal & fiscal optimization (SCI, trust structures…)</li>
+      <li>Renovation project management</li>
+      <li>Rental management for investment properties</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Discreet property sourcing & off-market research</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Full negotiation & transaction management</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Legal & fiscal structuring (SCI, trust, etc.)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Renovation & interior project management<br><small>(coordination of artisans, site supervision)</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Rental management for investment properties<br><small>(tenant management, contracts, rent collection)</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote / % of rent</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">Property due diligence & inspections</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * All prices are indicative and tailored to the complexity of the project.<br>
+      Travel fees: 0.75 €/km round trip (additional 20 € if journey > 1 hour).
+    </p>
+  </div>
+</details>
+<br><details>
+  <summary >
+    <img src="car.png" 
+         alt="Vehicles icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Vehicles</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>Full lifecycle vehicle concierge:</strong></p>
+    <p>Having a car in rural France is a must. I can help you make sure all is up to date, from your car itself to your vehicle papers.</p>
+    
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Research, purchase & import of prestige vehicles</li>
+      <li>French registration & insurance coordination</li>
+      <li>Maintenance scheduling & dealer relations</li>
+      <li>Driver & chauffeur arrangements</li>
+      <li>Discreet storage & winterization</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Administrative & Concierge Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Carte Grise application for a French-bought Vehicle (ANTS)<br><small>This does not include the price of the Carte Grise.</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Registering the Sale of a French Registered Vehicle (ANTS)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Carte Grise Modifications (ANTS)<br><small>Change of Address, Duplicate etc.</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Importing and Registering a Foreign car in France (846A/Quitus Fiscal & ANTS)<br><small>This does not include any import taxes or duties due on the vehicle (if applicable) or the price of the carte grise.</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">250 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Comparing Vehicle Insurances</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">80 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Swapping a Foreign Driving Licence for a French one</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">90 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Renewing a French Driving Licence</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">60 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Selling/Buying a vehicle on your behalf</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">FFVE Application</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">80 € per vehicle</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Booking your Contrôle Technique (MOT)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">25 €</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">Crit'Air Sticker</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">25 € per vehicle</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * Travel fees: 0.75 €/km round trip<br>
+      If journey > 1h, an extra 20 € will be added.
+    </p>
+  </div>
+</details><br>
+<details>
+  <summary>
+    <img src="deal.png" 
+         alt="Corporate icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Corporate</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>From setting up your business to being your dedicated French liaison:</strong></p>
+    <p>I act as your trusted representative and ongoing point of contact in France — handling everything from initial company formation to day-to-day administration, banking relationships, and compliance, so you can focus on your business without the usual French bureaucratic hurdles.</p>
+    
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Company formation (SAS, SARL, EURL, etc.)</li>
+      <li>Bank account opening & ongoing banking relations</li>
+      <li>Tax & accounting coordination</li>
+      <li>Office search, lease negotiation & setup</li>
+      <li>Visa, work permit & residency assistance for executives & employees</li>
+      <li>Ongoing liaison: dealing with French administrations, suppliers, authorities on your behalf</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Company formation (SAS, SARL, EURL, etc.) including statutes & registration</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Bank account opening assistance & relationship management</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Tax registration & initial accounting setup</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Office / commercial space search & lease negotiation</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Visa, work permit & Talent Passport assistance for executives</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Ongoing corporate liaison & administration (per month or per project)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">Custom packages (e.g., full setup + first-year support)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * All prices are indicative and tailored to the complexity and size of your business.<br>
+      Travel fees: 0.75 €/km round trip (additional 20 € if journey > 1 hour).
+    </p>
+  </div>
+</details>
+
+<br><details>
+  <summary>
+    <img src="medical-chart.png" 
+         alt="Health icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Health</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>Access to France’s world-class healthcare system:</strong></p>
+    <p>I can help you navigate the French health system and make sure you are fully covered with everything you need for your personal situation.</p>
+    
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Private doctor & specialist introductions</li>
+      <li>Private hospital & clinic VIP access</li>
+      <li>Health insurance setup & optimization</li>
+      <li>Convalescence & home care coordination</li>
+      <li>Wellness & preventive medicine programs</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Administrative & Concierge Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Social Security Application (for one person)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">120 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Social Security Application (for one couple)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">210 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Social Security Application (for one couple + one child)<br><small>Additional 20 € per extra child</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">230 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Booking a Medical Appointment</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">25 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Accompanying you to a Medical Appointment</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote<br><small>(50 €/hour + travel fees)</small></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">MDPH Application</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">130 €</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">Comparing Mutuelles (Supplementary Health Insurance)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">80 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * Travel fees: 0.75 €/km round trip<br>
+      If journey > 1h, an extra 20 € will be added.
+    </p>
+  </div>
+</details>
+<br>
+<details>
+  <summary>
+    <img src="citizenship.png" 
+         alt="Residency icon" width="28" height="28" style="filter: brightness(0);">
+    <strong>Residency</strong>
+  </summary>
+  
+  <div class="details-content" style="padding: 1rem 1.5rem; line-height: 1.6;">
+    <p><strong>From tourist to resident — smoothly:</strong></p>
+    <p>I can help guide and advise you on the documents you would need to reside in France based on your situation. From initial visa applications to renewals, nationality pathways, and administrative follow-up, I handle the paperwork, appointments, and validations so you can focus on settling in.</p>
+    
+    <ul style="margin: 1rem 0; padding-left: 1.8rem; list-style: disc;">
+      <li>Long-stay visa & residency permit applications</li>
+      <li>French nationality & dual citizenship pathways</li>
+      <li>Tax residency planning & declarations</li>
+      <li>Carte de séjour & titre de séjour management</li>
+      <li>Family reunification & schooling arrangements</li>
+    </ul>
+
+    <h4 style="margin-top: 1.8rem; margin-bottom: 0.8rem; color: #333;">Visa & Residency Services & Pricing</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f8f8f8; text-align: left;">
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd;">Service</th>
+          <th style="padding: 12px 15px; border-bottom: 2px solid #ddd; text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Visitor Visa Application (per visa)<br><small>Includes full guidance, document checklist, form completion, appointment booking, and visa validation in France + free phone call on first-year admin procedures</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">250 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Visitor Visa Application (minors)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">180 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Business Visa Application (per visa)<br><small>For sole traders: includes guidance, business plan review, forms, appointment booking, work authorisation if applicable, and visa validation + free first-year admin call</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">380 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Visa Validation (in France)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">70 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">French Nationality Application</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">250 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Visitor Carte de Séjour Renewal</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">60 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Business Carte de Séjour Renewal</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">150 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">EU Family Member Carte de Séjour (1st Application)</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">180 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">EU Family Member Carte de Séjour Renewal</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">70 €</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Carte de Séjour Change of Status</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">Quote</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 12px 15px;">Carte de Séjour Modifications<br><small>Change of address, name, etc.</small></td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">50 €</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 15px;">DCEM Application</td>
+          <td style="padding: 12px 15px; text-align: right; font-weight: bold;">80 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 1.5rem; font-style: italic; color: #555; font-size: 0.9em;">
+      * Additional 10 € fee if you do not already have an ANEF account (applies to several services above).<br>
+      Travel fees: 0.75 €/km round trip (additional 20 € if journey > 1 hour).
+    </p>
+  </div>
+</details>
+<br><br>
+<details>
+  <summary>
+    <img src="concierge.png" 
+         alt="The Unusual icon" width="24" height="24" style="vertical-align:middle; margin-right:8px; filter: brightness(0);">
+    <strong>The Unusual</strong><i> Impossible n'est pas français*</i>
+  </summary>
+  <div class="details-content">
+    <p>Anything can be arranged — nothing is impossible in France:</p>
+    <ul>
+      <li>Exclusive experiences & bespoke requests</li>
+      <li>Private events & VIP access</li>
+      <li>Discreet & unusual logistics</li>
+      <li>Creative solutions for the impossible</li>
+ 
+    </ul>*Impossible isn't French.
+  </div>
+</details>
+<hr />
+<div class="canary"><footer>
+  <div style="max-width: 800px; margin: 0 auto;">
+
+
+    <!-- Icônes réseaux (remplace par tes vrais liens) -->
+    <div style="margin: px 0;">
+
+      
     </div>
 
+    <!-- Contact -->
+    <p style="font-size: 1em; margin: 20px 0;">
+      <a href="instagram.com/brian.fno" style="color: #000; text-decoration: none;">@brian.fno</a>
+      <span style="margin: 0 10px;">|</span><a href="mailto:brian.fno@proton.me" style="color: #000; text-decoration: none;">✉️ brian.fno@proton.me</a>
+      <span style="margin: 0 10px;">|</span>
+      <a href="tel:+33683358160" style="color: #000; text-decoration: none;">📞 +33 6 83 35 81 60</a>
+    </p>
 
-    <!-- # page wrap
-    ================================================== -->
-    <div class="s-pagewrap">
-
-        <div class="circles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-
-        <!-- ## site header 
-        ================================================== -->
-        <header class="s-header">
-
-            <div class="header-mobile">
-                <span class="mobile-home-link"><a href="index.html"><i>Croa</i>ssant.</a></span>
-                <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
-            </div>
-
-            <div class="row wide main-nav-wrap">
-                <nav class="column lg-12 main-nav">
-                    <ul>
-               <li><a href="index.html"><i>Croa</i>ssant.</a></li>
-                        <li><a href="about.html" >About</a></li>
-                           <li><a href="services.html" >Services</a></li>
-                        <li><a href="work.html">Works</a></li>
-                                                <li><a href="testimonials.html" >Testimonials</a></li>
-
-                        <li><a href="contact.html">Say Bonjour</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-        </header> <!-- end s-header -->
-
-
-        <!-- ## main content
-        ==================================================- -->
-        <main class="s-content">
-
-
-            <!-- ### intro
-            ================================================== -->
-            <section id="intro" class="s-intro target-section">
-
-                <div class="row intro-content wide">
-
-                    <div class="column">
-                        <div class="text-pretitle with-line">
-                        Our services?
-                        </div>
-
-                        <h1 class="text-huge-title">
-                            Your desires, <span style="color:darkgrey; opacity: 0.2;"> <i>oui, vraiment.</i></span><br>
-                        </h1>
-<table>
-  <thead>
-    <tr>
-      <th>P-xxxxx</th>
-      <th>Location</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">photographer</span> for our elopement ceremony in Paris. We’ll be at the Eiffel Tower and need someone who can capture candid moments. Preferably with experience in small, intimate weddings.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We’re hosting a family reunion in Provence and need a <span style="color: white;">videographer</span> to document the day. We’d like a mix of candid shots and interview-style clips. If you can also help with editing, that’d be great!</td>
-      <td>Provence</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We are organizing a small wedding in Bordeaux and need a <span style="color: white;">wedding planner</span> to help with coordination, including booking a <span style="color: white;">photographer</span> and <span style="color: white;">caterer</span>. Someone familiar with local venues would be ideal.</td>
-      <td>Bordeaux</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">personal chef</span> to prepare a gourmet meal for my family in Paris. We want someone who can handle dietary restrictions, especially gluten-free and dairy-free options.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We need a <span style="color: white;">private tour guide</span> for a day trip to Normandy. We’re looking for someone who can offer in-depth historical knowledge and tailor the day to our interests.</td>
-      <td>Normandy</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">ski instructor</span> for an upcoming trip to Chamonix. We’re beginners and need someone patient who can give us private lessons over the course of a week.</td>
-      <td>Chamonix</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We’re organizing a corporate event in Lyon and need a <span style="color: white;">event coordinator</span> to handle logistics, book a <span style="color: white;">venue</span>, and find a <span style="color: white;">DJ</span> for entertainment.</td>
-      <td>Lyon</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We need a <span style="color: white;">luxury car rental service</span> for a weekend in Nice. We’re looking for an <span style="color: white;">chauffeur</span> to drive us around in a high-end vehicle.</td>
-      <td>Nice</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">florist</span> in Paris to create floral arrangements for our wedding. We’re interested in classic French designs with a focus on roses and peonies.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We need a <span style="color: white;">private shopper</span> to assist us with selecting outfits for an upcoming gala in Cannes. Someone with a strong sense of fashion and knowledge of luxury brands would be ideal.</td>
-      <td>Cannes</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">butler</span> to assist with managing daily tasks and coordinating household needs during our stay in Paris. We’re looking for someone with experience in high-end hospitality.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We’re looking for a <span style="color: white;">pet sitter</span> who can care for our dog while we’re traveling in the south of France. We need someone who can provide regular walks and ensure our pet is well looked after.</td>
-      <td>Provence</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We need a <span style="color: white;">driver</span> and <span style="color: white;">guide</span> to take us on a wine tour through Bordeaux. We’re looking for a knowledgeable local who can provide insight into the region’s vineyards and wine culture.</td>
-      <td>Bordeaux</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">concierge</span> service to help organize an itinerary for a month-long road trip across France, including recommendations for hotels, <span style="color: white;">restaurants</span>, and must-see attractions.</td>
-      <td>Throughout France</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">housekeeper</span> to assist with daily cleaning, laundry, and general housekeeping duties during our stay in Saint-Tropez. Someone with experience in high-end vacation rentals is preferred.</td>
-      <td>Saint-Tropez</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>We need a <span style="color: white;">nanny</span> for our children while we attend business meetings in Paris. We’re looking for someone with experience in caring for young kids, especially during meal times and bed time.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Looking for a <span style="color: white;">personal assistant</span> in Paris to help with scheduling, shopping, and general errands. We need someone reliable and organized to assist with managing our busy schedule.</td>
-      <td>Paris</td>
-    </tr>
-  </tbody>
-</table>
-
-    <h4 class="text-huge-title " style="margin-left: 8; font-size: 30px; opacity: 0.3;"><a href="work.html">Our most distinguished P-s?</a>
-
-        </main> <!-- end s-content -->
-
-
-        <!-- ## footer
-        ================================================== -->
-        <footer class="s-footer">
-
-            <div class="row">
-                <div class="column ss-copyright">
-                    <span>© Copyright Croassant 2025</span> 
-                    <span>Maintained by <a href="https://www.instagram.com/croaaassant/">Brian F.</a> </span>
-                </div>
-
-            </div>
-
-        </footer> <!-- end s-footer -->
-
-    </div> <!-- end -s-pagewrap -->
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-</body>
+    <!-- Legal & Copyright -->
+    <p style="font-size: 0.9em; color: #777; margin-top: 40px;">
+      © 2026 Brian FINO – All Rights Reserved  
+      
+    </p>
+  </div>
+</footer>
+</div></article>
+  </body>
 </html>
